@@ -104,7 +104,7 @@
 <repository>
 <id>deploymentRepo</id>
 <name>Nexus Repository</name>
-<url>http://192.168.1.102:8081/repository/maven-snapshots/</url>
+<url>http://192.168.81.170:8081/repository/maven-central-repository/</url>
 </repository>
 </distributionManagement>
 	<build>
