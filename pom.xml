@@ -105,7 +105,7 @@
 <repository>
 <id>deploymentRepo</id>
 <name>Nexus Repository</name>
-<url>http://192.168.81.170:8081/repository/maven-snapshots/</url>
+<url>http://192.168.81.170:8082/repository/maven-snapshots/</url>
 </repository>
 </distributionManagement>
 	<build>
@@ -118,8 +118,34 @@
 			    <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.1.0</version>
-            </plugin>               
+            </plugin>  
+	                <plugin>
+<groupId>org.jacoco</groupId>
+<artifactId>jacoco-maven-plugin</artifactId>
+<version>0.8.6</version>
+<executions>
+<execution>
+<goals>
+<goal>prepare-agent</goal>
+</goals>
+</execution>
+<execution>
+<id>report</id>
+<phase>prepare-package</phase>
+<goals>
+<goal>report</goal>
+</goals>
+</execution>
+</executions>
+</plugin>
+<plugin>
+<groupId>org.sonarsource.scanner.maven</groupId>
+<artifactId>sonar-maven-plugin</artifactId>
+
+</plugin>     
 		</plugins>
+	
+		<finalName>devops-integration</finalName>
 	</build>
 
 </project>
