@@ -1,5 +1,12 @@
 pipeline{
-    agent any
+    
+    
+	agent {label 'linux'}
+
+	environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerHub-token')
+	}
+  //  agent any
    
     stages{
         
@@ -73,12 +80,18 @@ jacoco()
     }       
         
         
-         stage('Build docker image'){
-            steps{
-                script{
-                    sh 'docker build -t nesrinehm1996/tpAchatProject-1.0-SNAPSHOT .'
-                }
-            }
+        
+             
+             
+          stage('Login') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+
+	
+             
         }
 }
    post {
