@@ -1,9 +1,6 @@
 pipeline{
-    
-    
-	agent any
-
-
+    agent any
+   
     stages{
         
           stage("git pull"){
@@ -76,18 +73,12 @@ jacoco()
     }       
         
         
-        
-             
-             
-          stage('Login') {
-
-			steps {
-				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-			}
-		}
-
-	
-             
+         stage('Build docker image'){
+            steps{
+                script{
+                    sh 'docker build -t nesrinehm1996/devops-integration .'
+                }
+            }
         }
 }
    post {
@@ -96,3 +87,5 @@ jacoco()
             }
         }
 }
+
+
