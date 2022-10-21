@@ -3,11 +3,7 @@ pipeline{
     
 	agent any
 
-	environment {
-		DOCKERHUB_CREDENTIALS=credentials('dockerHub-token')
-	}
-  //  agent any
-   
+
     stages{
         
           stage("git pull"){
