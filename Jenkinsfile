@@ -62,6 +62,25 @@ pipeline{
         }
 
     }
+        stage('Build docker image'){
+            steps{
+                script{
+                    sh 'docker build -t devops-integration .'
+                }
+            }
+        
+           }
+        
+        
+        stage ('pushing Image'){
+            steps{
+                script{
+                    sh 'docker login -u "omri.raed@esprit.tn" -p "raed1234#" docker.io'
+                    sh 'docker tag devops-integration:latest raed12345/devops-integration:latest'
+                    sh ' docker push nesrinehm1996/devops-integration:latest'
+                }
+            }
+        }
 
 
     }
