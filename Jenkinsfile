@@ -83,6 +83,18 @@ jacoco()
             }
         
            }
+        
+        
+        stages ('pushing Image'){
+steps{
+script{
+sh 'docker login -u "nesrinehm1996" -p "Nesrine@1996 docker.io"
+sh 'docker tag devops-integration:latest nesrinehm1996/devops-integration:latest'
+sh ' docker push nesrinehm1996/devops-integration:latest'
+}
+}
+}
+        
 }
    post {
             always {
