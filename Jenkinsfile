@@ -85,7 +85,7 @@ jacoco()
            }
         
         
-        stages ('pushing Image'){
+        stage ('pushing Image'){
             steps{
                 script{
                     sh 'docker login -u "nesrinehm1996" -p "Nesrine@1996" docker.io'
