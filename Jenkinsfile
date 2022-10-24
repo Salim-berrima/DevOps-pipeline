@@ -84,6 +84,9 @@ environment {
 				sh 'docker push raed12345/tpachatproject'
 			}
 	}
+	
+	    
+    }
     
     }
 	
