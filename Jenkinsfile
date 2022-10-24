@@ -66,24 +66,37 @@ environment {
         }
 
     }
-        stage('Build docker image'){
-            steps{
-                script{
-                    sh 'docker build -t tpAchatProject-1.0 .'
-                }
-            }
+        stage('Docker Build') {
+
+			steps {
+				sh 'docker build -t raed12345/tpachatproject .'
+			}
+		}
         
-           }
+       
+		stage('Docker Login') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		} 
         
         
-        stage ('pushing Image'){
-            steps{
-                script{
-                    sh 'docker login -u "raed12345" -p "raed1234#" docker.io'
-                    sh 'docker tag tpAchatProject-1.0:latest raed12345/tpAchatProject-1.0:latest'
-                    sh ' docker push raed12345/tpAchatProject-1.0:latest'
-                }
-            }
+        	stage('Push') {
+
+			steps {
+				sh 'docker push raed12345/tpachatproject'
+			}
+		}
+	
+          
+            
+}
+    post {
+		always {
+			sh 'docker logout'
+		}
+	}
         }
 
 
