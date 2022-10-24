@@ -1,10 +1,7 @@
 pipeline{
     agent any
     
-    environment {
-		DOCKERHUB_CREDENTIALS=credentials('dockerHub-token')
-	}
-
+  
    
     stages{
         
@@ -77,7 +74,7 @@ jacoco()
 
     }       
         
-        
+    } 
            stage('Build docker image'){
             steps{
                 script{
