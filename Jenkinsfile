@@ -1,6 +1,10 @@
 pipeline{
     agent any
-
+    
+environment {
+		DOCKERHUB_CREDENTIALS=credentials('742f9082-3c5f-4170-85e6-decda4b606d9')
+	}
+    
     stages{
         stage("git pull"){
             steps{
