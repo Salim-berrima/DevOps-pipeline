@@ -66,19 +66,19 @@ environment {
         }
 
     }
-        stage('Docker Build') {
+        stage('Docker Build Image') {
 
 			steps {
 				sh 'docker build -t raed12345/tpachatproject .'
 			}
 		}
-          stage('Docker Login') {
+          stage(' Login Docker hub ') {
 
 			steps {
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW docker.io'
 			}
 		} 
-        stage('Push') {
+        stage('Push Image') {
 
 			steps {
 				sh 'docker push raed12345/tpachatproject'
