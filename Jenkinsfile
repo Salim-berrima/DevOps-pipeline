@@ -74,7 +74,7 @@ jacoco()
 
     }       
         
-    } 
+    
            stage('Build docker image'){
             steps{
                 script{
@@ -82,7 +82,7 @@ jacoco()
                 }
             }
         
-        
+           }
 }
    post {
             always {
