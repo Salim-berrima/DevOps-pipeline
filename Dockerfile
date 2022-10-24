@@ -1,4 +1,4 @@
 FROM openjdk:11
 ARG JAR_FILE
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java », « -jar », « /app.jar »]
+COPY ${JAR_FILE} tpAchatProject-1.0.jar
+ENTRYPOINT ["java », « -jar », « /tpAchatProject-1.0.jar »]
