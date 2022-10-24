@@ -94,6 +94,16 @@ jacoco()
                 }
             }
         }
+        
+        
+        stage('deploy docker-compose'){
+            steps{
+                script{
+                    sh 'docker-compose up -d'
+                }
+            }
+       
+        }
     }
    post {
             always {
