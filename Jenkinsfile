@@ -2,7 +2,7 @@ pipeline{
     agent any
     
 environment {
-		DOCKERHUB_CREDENTIALS=credentials('742f9082-3c5f-4170-85e6-decda4b606d9')
+		DOCKERHUB_CREDENTIALS=credentials('742f9082-')
 	}
     
     stages{
@@ -11,7 +11,7 @@ environment {
 
 
                 git branch: 'facture_branches',
-                credentialsId: '60527384-563b-4df0-85b8-10954cf21222',
+                credentialsId: '6052',
                 url: 'https://github.com/nesrinehm1996/magasinBack.git'
 
                 }
