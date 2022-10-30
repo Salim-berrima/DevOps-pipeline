@@ -50,7 +50,37 @@ stage("Git clone"){
                 sh 'mvn install package'
             }
          }
- stage('Build Dockerfile') {
+            
+            
+              stage('Test & Jacoco Static Analysis') {
+            steps {
+            junit 'src/reports/*.xml'
+            jacoco()
+            }
+        }
+        
+                  stage ('MVN SONARQUBE') { 
+//    def scannerHome = tool 'SonarScanner 4.0';
+        steps{
+        withSonarQubeEnv('sonarqube.8.9.7') { 
+        // If you have configured more than one global server connection, you can specify its name
+//      sh "${scannerHome}/bin/sonar-scanner"
+        sh "mvn sonar:sonar"
+    }
+        }
+        }
+     
+       
+        
+        
+        stage('nexus deploy') {
+        steps{
+            sh'mvn deploy -DskipTests '
+           
+        }
+        }
+            
+stage('Build Dockerfile') {
 steps{
             
 script {
