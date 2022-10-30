@@ -9,7 +9,7 @@ pipeline{
             steps{
               
                 git branch: 'produitBack', 
-                credentialsId: '8cca21f7-732f-4451-8b06-512b72565d25', 
+                credentialsId: '**', 
                 url: 'https://github.com/nesrinehm1996/magasinBack.git'
                   
                 }
